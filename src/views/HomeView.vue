@@ -14,6 +14,7 @@ export default {
         age: "21",
         address: "seoul",
       };
+      // eslint-disable-next-line no-undef
       webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify(param));
     },
   },
