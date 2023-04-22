@@ -14,9 +14,6 @@ const store = new Vuex.Store({
       state.todos = value;
     },
     ADD_TODO(state, value) {
-      console.log(value.title, "ss");
-      console.log(value.content, "ss");
-      console.log(value.id, "ss");
       state.todos.push({
         task: value.title,
         isCom: value.content,
@@ -45,7 +42,6 @@ const store = new Vuex.Store({
         //     Authorization: context.state.token,
         //   },
         // });
-        console.log(state.todos);
         commit("SET_TODO", state.todos);
       } catch (error) {
         console.log(error);
@@ -65,7 +61,6 @@ const store = new Vuex.Store({
         //     },
         //   }
         // );
-        console.log(payload);
         const timestamp = new Date().getTime(); // 현재 날짜와 시간을 밀리초 단위로 나타내는 타임스탬프
         const id = `item_${timestamp}`; // 'item_' + 타임스탬프
 
