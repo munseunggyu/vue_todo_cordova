@@ -9,7 +9,9 @@
 </template>
 
 <script>
+import { store } from "@/store";
 import { mapState } from "vuex";
+
 export default {
   computed: {
     ...mapState({
@@ -32,20 +34,19 @@ export default {
       webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify(param));
     },
     changeBack() {
-      console.log(this, "vue");
-      this.$store.commit("SET_BACK", new Date());
+      // console.log(this, "vue");
+      // this.$store.commit("SET_BACK", new Date());
+      store.commit("SET_BACK", new Date());
     },
   },
   created() {
-    const selfThis = this;
     window.call_func = function (val) {
       console.log(val);
-      alert(val);
-      console.log("asf");
+      // alert(val);
     };
     window.call_func_back = function (val) {
       console.log(val);
-      selfThis.$store.commit("SET_BACK", val);
+      store.commit("SET_BACK", new Date());
     };
   },
 };
