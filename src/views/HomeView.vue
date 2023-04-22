@@ -19,8 +19,21 @@ export default {
     },
     call_func(val) {
       alert("wow");
+      console.log(val);
       alert(val); //전달받은 데이터 확인
     },
+  },
+  created() {
+    window.call_func = function (val) {
+      console.log(val);
+      alert(val);
+      console.log("asf");
+    };
+    function call_func(val) {
+      console.log(val);
+      alert(val);
+      console.log("created");
+    }
   },
 };
 </script>
