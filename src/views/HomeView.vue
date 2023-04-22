@@ -29,6 +29,8 @@ export default {
       alert(val);
       console.log("asf");
     };
+
+    // eslint-disable-next-line no-unused-vars
     function call_func(val) {
       console.log(val);
       alert(val);
