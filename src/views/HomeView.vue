@@ -3,7 +3,6 @@
     <h1>Home go</h1>
     <button @click="goApp">go App</button>
     <button @click="changeBack">change Back</button>
-    <button @click="changeBack">change Back</button>
     {{ back }}
   </div>
 </template>
@@ -46,7 +45,7 @@ export default {
     };
     window.call_func_back = function (val) {
       console.log(val);
-      store.commit("SET_BACK", new Date());
+      store.commit("SET_BACK", val);
     };
   },
 };
