@@ -2,7 +2,7 @@
   <ul>
     <li v-for="todo in todos" v-bind:key="todo.id">
       <input type="checkbox" :value="todo.isCom" @change="changeCom(todo.id)" />
-      <span :class="{ line: todo.content }">할 일: {{ todo.title }}</span>
+      <span :class="{ line: todo.content }">할 일: {{ todo.task }}</span>
       <button @click="deleteTodo(todo.id)">삭제</button>
     </li>
   </ul>

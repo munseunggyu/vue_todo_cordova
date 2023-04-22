@@ -1,9 +1,9 @@
-import axios from "axios";
+// import axios from "axios";
 import Vue from "vue";
 import Vuex from "vuex";
 
 Vue.use(Vuex);
-const url = "http://localhost:5500";
+// const url = "http://localhost:5500";
 const store = new Vuex.Store({
   state: {
     token: localStorage.getItem("token") || null,
@@ -14,6 +14,9 @@ const store = new Vuex.Store({
       state.todos = value;
     },
     ADD_TODO(state, value) {
+      console.log(value.title, "ss");
+      console.log(value.content, "ss");
+      console.log(value.id, "ss");
       state.todos.push({
         task: value.title,
         isCom: value.content,
@@ -34,34 +37,44 @@ const store = new Vuex.Store({
     },
   },
   actions: {
-    async getTodos(context) {
+    async getTodos({ state, commit }) {
       try {
-        const todos = await axios.get(`${url}/todos`, {
-          headers: {
-            Authorization: context.state.token,
-          },
-        });
-
-        context.commit("SET_TODO", todos.data.data);
+        // const todos =
+        // await axios.get(`${url}/todos`, {
+        //   headers: {
+        //     Authorization: context.state.token,
+        //   },
+        // });
+        console.log(state.todos);
+        commit("SET_TODO", state.todos);
       } catch (error) {
         console.log(error);
       }
     },
-    async addTodo(context, value) {
+    async addTodo({ commit }, payload) {
       try {
-        const todo = await axios.post(
-          `${url}/todos`,
-          {
-            title: value,
-            content: false,
-          },
-          {
-            headers: {
-              Authorization: context.state.token,
-            },
-          }
-        );
-        context.commit("ADD_TODO", todo.data.data);
+        // const todo = await axios.post(
+        //   `${url}/todos`,
+        //   {
+        //     title: value,
+        //     content: false,
+        //   },
+        //   {
+        //     headers: {
+        //       Authorization: context.state.token,
+        //     },
+        //   }
+        // );
+        console.log(payload);
+        const timestamp = new Date().getTime(); // 현재 날짜와 시간을 밀리초 단위로 나타내는 타임스탬프
+        const id = `item_${timestamp}`; // 'item_' + 타임스탬프
+
+        const data = {
+          id,
+          title: payload,
+          content: false,
+        };
+        commit("ADD_TODO", data);
       } catch (error) {
         console.log(error);
       }
