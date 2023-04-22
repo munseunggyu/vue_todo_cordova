@@ -2,11 +2,24 @@
   <div>
     <h1>Home go</h1>
     <button @click="goApp">go App</button>
+    <button @click="changeBack">change Back</button>
+    {{ back }}
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
+  computed: {
+    ...mapState({
+      back: (state) => state.back,
+    }),
+  },
+  watch: {
+    back(newVale, oldValue) {
+      console.log(`newVale: ${newVale}, oldValue: ${oldValue}`);
+    },
+  },
   methods: {
     goApp() {
       const param = {
@@ -17,10 +30,8 @@ export default {
       // eslint-disable-next-line no-undef
       webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify(param));
     },
-    call_func(val) {
-      alert("wow");
-      console.log(val);
-      alert(val); //전달받은 데이터 확인
+    changeBack() {
+      this.$store.commit("SET_BACK", new Date());
     },
   },
   created() {
@@ -29,13 +40,6 @@ export default {
       alert(val);
       console.log("asf");
     };
-
-    // eslint-disable-next-line no-unused-vars
-    function call_func(val) {
-      console.log(val);
-      alert(val);
-      console.log("created");
-    }
   },
 };
 </script>

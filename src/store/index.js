@@ -8,6 +8,7 @@ const store = new Vuex.Store({
   state: {
     token: localStorage.getItem("token") || null,
     todos: [],
+    back: null,
   },
   mutations: {
     SET_TODO(state, value) {
@@ -31,6 +32,9 @@ const store = new Vuex.Store({
           return todo;
         }
       });
+    },
+    SET_BACK(state, payload) {
+      state.back = payload;
     },
   },
   actions: {
