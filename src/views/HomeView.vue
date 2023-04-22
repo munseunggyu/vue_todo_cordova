@@ -40,6 +40,9 @@ export default {
       alert(val);
       console.log("asf");
     };
+    window.call_func_back = function (val) {
+      this.$store.commit("SET_BACK", val);
+    };
   },
 };
 </script>
