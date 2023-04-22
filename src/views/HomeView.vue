@@ -17,6 +17,10 @@ export default {
       // eslint-disable-next-line no-undef
       webkit.messageHandlers.cordova_iab.postMessage(JSON.stringify(param));
     },
+    call_func(val) {
+      alert("wow");
+      alert(val); //전달받은 데이터 확인
+    },
   },
 };
 </script>
